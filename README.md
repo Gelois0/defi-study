@@ -45,6 +45,8 @@ Recursos en español sobre finanzas descentralizadas: lending, provisión de liq
 - [Modo de cobro de fees](https://docs.meteora.ag/core-products/dlmm/collect-fee-mode)
 - [Auditorías](https://docs.meteora.ag/resources/audits/dlmm)
 
+**Recurso complementario:** [LP Army Academy](https://www.lparmy.com/academy) — recurso externo sugerido para aprender sobre provisión de liquidez. El contenido de la página no se ha revisado de forma independiente.
+
 **Al analizar una posición**, identifica el bin activo, la liquidez y el volumen; calcula en qué token queda la posición si el precio se mueve. Compara fees realizados con impermanent loss y costes de gestión. Si se usa un vault o bot, revisa sus permisos.
 
 ### Comparación de resultados

@@ -13,7 +13,7 @@ Recursos en español sobre finanzas descentralizadas: lending, provisión de liq
   - [3.1. USDC · Circle](#31-usdc--circle)
   - [3.2. USDT · Tether](#32-usdt--tether)
   - [3.3. DAI y USDS · Sky](#33-dai-y-usds--sky)
-- [4. Ethereum: infraestructura para DeFi](#4-ethereum-infraestructura-para-defi)
+- [4. Infraestructura de Ethereum](#4-infraestructura-de-ethereum)
   - [4.1. Red y transacciones](#41-red-y-transacciones)
   - [4.2. Tokens, wallets y permisos](#42-tokens-wallets-y-permisos)
   - [4.3. Consulta técnica](#43-consulta-técnica)
@@ -152,7 +152,7 @@ Subtema de DeFi: emisión, reservas, canje, custodia, redes y riesgos. Las pági
 
 **Preguntas para evaluar una stablecoin:** ¿quién la emite?, ¿qué derecho de canje existe?, ¿qué reservas o colateral la respaldan?, ¿qué controles de congelamiento aplican?, ¿cuál es el contrato oficial y en qué red se utiliza?
 
-## 4. Ethereum: infraestructura para DeFi
+## 4. Infraestructura de Ethereum
 
 Referencias de apoyo sobre la infraestructura subyacente; no convierten el repositorio en una ruta de programación.
 
@@ -173,7 +173,8 @@ Referencias de apoyo sobre la infraestructura subyacente; no convierten el repos
 
 ### 4.3. Consulta técnica
 
-- [Ethereum Protocol Fellowship](https://epf.wiki/#/eps/intro)
+- [Ethereum Protocol Fellowship — introducción](https://epf.wiki/#/eps/intro) — material de infraestructura y protocolo; útil para entender las capas que soportan aplicaciones, no es un prerrequisito de desarrollo.
+- [Upgrading Ethereum — edición Capella](https://eth2book.info/capella/) — manual técnico de Ben Edgington sobre la capa de consenso de Ethereum PoS: especificación anotada, beacon chain, consenso, validadores, depósitos y retiros, incentivos y actualizaciones. Esta URL fija una edición Capella, no una guía de la EVM ni de DeFi; verifica cambios posteriores en [la edición más reciente](https://eth2book.info/latest/). La obra está en progreso y bajo CC BY-SA 4.0.
 - [Mastering Ethereum — referencia web](https://masteringethereum.xyz/)
 
 ## 5. Datos y verificación
@@ -214,6 +215,7 @@ Selección por tema, sin secuencia obligatoria:
 | [Blockchain, Crypto and DeFi](https://www.oreilly.com/library/view/blockchain-crypto-and/9781394275892/) | Lending, AMM, pools y riesgos. |
 | [Automated Market Makers — Ottina, Steffensen y Kristensen](https://link.springer.com/book/10.1007/978-1-4842-8616-6) | AMM, Uniswap V2/V3, Balancer y Curve; base conceptual para estudiar provisión de liquidez. |
 | [Trading and Exchanges — Larry Harris](https://global.oup.com/academic/product/trading-and-exchanges-9780195144703) | Market making, inventario, spreads y selección adversa. |
+| [Upgrading Ethereum — Ben Edgington](https://eth2book.info/capella/) | Consenso Proof of Stake, beacon chain y especificación anotada; edición Capella. Revisar la edición más reciente. |
 | [Mastering Ethereum, 2nd Edition](https://github.com/ethereumbook/ethereumbook) | Cuentas, contratos, tokens, gas y seguridad EVM. |
 | [Decoding Digital Assets](https://link.springer.com/book/10.1007/978-3-031-54601-3) | Stablecoins, depósitos tokenizados y CBDC. |
 | [The Anatomy of the Swipe — Ahmed Siddiqui](https://www.academyoftheswipe.com/order-book) | Contexto complementario: pagos con tarjeta y settlement. |

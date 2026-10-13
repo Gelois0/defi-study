@@ -5,6 +5,7 @@ Recursos en español sobre finanzas descentralizadas: lending, provisión de liq
 ## Índice
 
 - [1. Préstamos y mercados: Morpho](#1-préstamos-y-mercados-morpho)
+  - [Aave V3](#aave-v3)
 - [2. Liquidez y market making: Meteora DLMM](#2-liquidez-y-market-making-meteora-dlmm)
   - [Comparación de resultados](#comparación-de-resultados)
 - [3. Stablecoins](#3-stablecoins)
@@ -35,6 +36,41 @@ Recursos en español sobre finanzas descentralizadas: lending, provisión de liq
 - [Riesgos](https://docs.morpho.org/learn/resources/risks/)
 
 **Al analizar un mercado o vault**, identifica la red y el contrato; curator, owner y allocator; mercados y caps; colateral, oráculo y LLTV. Separa el interés base de los incentivos y revisa fees, permisos administrativos y liquidez de retiro.
+
+### Aave V3
+
+**Enfoque:** mercados de lending con reservas de liquidez compartidas por activo. Los proveedores reciben aTokens que representan su posición; la deuda se registra en tokens de deuda. El activo subyacente, la red y la instancia del mercado importan: parámetros, liquidez y riesgos pueden diferir entre mercados.
+
+**Fuentes técnicas**
+
+- [Documentación oficial: visión general de Aave V3](https://aave.com/docs/aave-v3/overview)
+- [Reservas y parámetros de riesgo](https://aave.com/docs/aave-v3/concepts/reserve)
+- [Operaciones de mercado: supply, borrow, repay y withdraw](https://aave.com/docs/aave-v3/markets/operations)
+- [Estrategia de tasas de interés](https://aave.com/docs/aave-v3/smart-contracts/interest-rate-strategy)
+- [Contrato Pool](https://aave.com/docs/aave-v3/smart-contracts/pool)
+- [Repositorio oficial del protocolo](https://github.com/aave-dao/aave-v3-origin) — código, notas de versiones y materiales de seguridad. Los informes de auditoría se refieren a versiones y alcances concretos; no son garantía de seguridad actual.
+- [Aave V3 Technical Paper](https://raw.githubusercontent.com/aave/aave-v3-core/master/techpaper/Aave_V3_Technical_Paper.pdf) — documento técnico inicial de 2022; contrastar sus descripciones con la versión desplegada y documentación actual.
+
+**Curso de desarrollo**
+
+- [Aave V3 Protocol Development — Cyfrin Updraft](https://updraft.cyfrin.io/courses/aave-v3) — curso avanzado en inglés orientado a Solidity y Foundry. La página describe arquitectura, reservas, aTokens y deuda, tasas/utilización, supply/borrow/repay/withdraw/liquidation, flash loans e integración de una aplicación; anuncia ejercicios prácticos. La guía de configuración del curso indica que sus ejercicios usan un fork de Ethereum mainnet y se enfocan en el tag v3.3.0: compara ese código con las versiones más recientes antes de reutilizar ejemplos. El contenido exacto y las condiciones de acceso pueden cambiar.
+
+**Lecturas y guías sobre Aave**
+
+- [Aave V3 Book — GitHub](https://github.com/Scannty/aave-v3-book) — guía comunitaria centrada en arquitectura V3, tasas, reservas, liquidaciones y gobernanza. No es documentación oficial; valida cada afirmación frente al código y docs oficiales y comprueba su estado de mantenimiento antes de depender de ella.
+- [Aave Book — Calnix / GitBook](https://calnix.gitbook.io/aave-book) — guía técnica complementaria sobre contratos, funciones e interés. Algunas páginas parten de V2 y explican cambios de V3; el propio contenido advierte que una parte de la arquitectura ilustrada corresponde a V2, y varias páginas indican que no se actualizan desde hace años. Úsala como lectura histórica, no como especificación vigente.
+- [DeFi and the Future of Finance — Harvey, Ramachandran y Santoro](https://www.wiley.com/en-us/DeFi+and+the+Future+of+Finance-p-9781119836025) — libro de fundamentos y análisis de protocolos; incluye Aave entre los casos de lending. Complementa, no sustituye, documentación de V3.
+- [Blockchain, Crypto and DeFi — Marco Di Maggio](https://www.wiley.com/en-us/Blockchain%2C+Crypto+and+DeFi%3A+Bridging+Finance+and+Technology-p-9781394275892) — perspectiva financiera y técnica con casos sobre lending/DeFi; útil como contexto, no como manual actualizado de contratos Aave.
+
+**Cómo profundizar en la mecánica**
+
+1. **Flujo y contabilidad:** sigue un supply desde transferencia del token hasta acuñación del aToken; después rastrea cómo un borrow crea deuda y entrega liquidez, y cómo repay y withdraw alteran ambos balances. No confundas el aToken con el activo subyacente ni la tasa mostrada con un rendimiento garantizado.
+2. **Tasas y liquidez:** la utilización del reserve afecta las tasas de borrow; el modelo de dos pendientes eleva la tasa más rápido al rebasar el punto óptimo para incentivar repago/supply y conservar liquidez. La tasa del proveedor depende de la actividad de borrow y del reserve factor; incentivos externos son otra fuente y deben separarse.
+3. **Colateral y liquidación:** distingue LTV (capacidad inicial de endeudamiento), liquidation threshold (umbral de liquidación) y liquidation bonus/penalty (incentivo/coste de liquidar). El Health Factor combina valor del colateral, umbrales ponderados y deuda: `HF = Σ(valor_colateral_i × umbral_liquidación_i) / deuda_total`. Si cae por debajo de 1, la posición puede ser liquidable; los oráculos, el precio, la deuda acumulada y la liquidez disponible afectan el resultado.
+4. **Gestión de riesgo:** estudia caps de supply/borrow, pausas/freeze, eMode y aislamiento donde estén habilitados, riesgo de oráculo, calidad y correlación del colateral, concentración de liquidez, parámetros de gobernanza y diferencias entre redes. No asumas que una función o parámetro se comporta igual en todas las versiones o mercados.
+5. **Lectura de código:** parte de la versión del contrato que corresponde al mercado que estás analizando; recorre `Pool` y las bibliotecas de lógica para supply, borrow, repay y liquidation; contrasta la ejecución con eventos y estado on-chain. Una auditoría antigua no cubre automáticamente upgrades posteriores, configuración del mercado ni dependencias externas.
+
+**Preguntas de análisis:** ¿qué activo entra y sale?, ¿quién paga el interés?, ¿cuánta liquidez queda disponible para retiros?, ¿qué precio/oráculo afecta el HF?, ¿qué condiciones activan una liquidación y qué recibe el liquidator?, ¿qué parámetros puede modificar gobernanza?, ¿cuál es la versión exacta del contrato y qué riesgos de red, puente o activo se añaden?
 
 ## 2. Liquidez y market making: Meteora DLMM
 

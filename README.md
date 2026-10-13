@@ -105,6 +105,8 @@ Recursos para estudiar crédito on-chain, colateral, liquidez y liquidaciones.
 
 **Enfoque:** bins, bin step, rango, fees, inventario y estrategias Spot, Curve y BidAsk.
 
+**Libro de referencia:** [Automated Market Makers: A Practical Guide to Decentralized Exchanges and Cryptocurrency Trading — Miguel Ottina, Peter Johannes Steffensen y Jesper Kristensen](https://link.springer.com/book/10.1007/978-1-4842-8616-6) (Apress, 2023). Estudia Uniswap V2/V3, Balancer y Curve; sirve como base para comparar mecanismos de AMM y liquidez concentrada. No es un manual de Meteora DLMM: para bins, estrategias y parámetros específicos, consulta la documentación de Meteora.
+
 - [Qué es DLMM](https://docs.meteora.ag/core-products/dlmm/what-is-dlmm)
 - [Estrategias y casos de uso](https://docs.meteora.ag/core-products/dlmm/strategies-and-use-cases)
 - [Modo de cobro de fees](https://docs.meteora.ag/core-products/dlmm/collect-fee-mode)
@@ -210,6 +212,7 @@ Selección por tema, sin secuencia obligatoria:
 | --- | --- |
 | [Decentralizing Finance — Kenneth Bok](https://www.wiley.com/en-ca/Decentralizing+Finance:+How+DeFi,+Digital+Assets,+and+Distributed+Ledger+Technology+Are+Transforming+Finance-p-9781394154975) | Infraestructura DeFi, lending y conexión con finanzas tradicionales. |
 | [Blockchain, Crypto and DeFi](https://www.oreilly.com/library/view/blockchain-crypto-and/9781394275892/) | Lending, AMM, pools y riesgos. |
+| [Automated Market Makers — Ottina, Steffensen y Kristensen](https://link.springer.com/book/10.1007/978-1-4842-8616-6) | AMM, Uniswap V2/V3, Balancer y Curve; base conceptual para estudiar provisión de liquidez. |
 | [Trading and Exchanges — Larry Harris](https://global.oup.com/academic/product/trading-and-exchanges-9780195144703) | Market making, inventario, spreads y selección adversa. |
 | [Mastering Ethereum, 2nd Edition](https://github.com/ethereumbook/ethereumbook) | Cuentas, contratos, tokens, gas y seguridad EVM. |
 | [Decoding Digital Assets](https://link.springer.com/book/10.1007/978-3-031-54601-3) | Stablecoins, depósitos tokenizados y CBDC. |

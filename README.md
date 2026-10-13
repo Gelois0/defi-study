@@ -31,6 +31,14 @@ Recursos para estudiar crédito on-chain, colateral, liquidez y liquidaciones.
 
 ### 1.1. Morpho
 
+#### Whitepaper y código
+
+- [Morpho Blue Whitepaper — octubre de 2023](https://github.com/morpho-org/morpho-blue/blob/main/morpho-blue-whitepaper.pdf) — documento técnico de los autores del protocolo, no un artículo académico revisado por pares. Explica mercados aislados, gestión de riesgo externa, oráculos, contabilidad de deuda incobrable, LLTV, liquidaciones, contrato singleton y callbacks. Sus comparaciones con otros protocolos reflejan el contexto de 2023; no deben extrapolarse a versiones actuales. Tampoco especifica Morpho Vault V2.
+- [Código oficial de Morpho Blue](https://github.com/morpho-org/morpho-blue) — contrastar el diseño con `src/Morpho.sol` y las interfaces del protocolo.
+- [Auditorías del núcleo](https://github.com/morpho-org/morpho-blue/tree/main/audits) — revisar versión, alcance y hallazgos. No cubren automáticamente los vaults, sus gestores ni todas las dependencias de un mercado.
+
+#### Documentación y vaults
+
 **Enfoque:** lending on-chain, mercados, vaults, colateral, oráculos, LLTV, liquidaciones y gestión de riesgos.
 
 - [Morpho Blue](https://docs.morpho.org/learn/concepts/blue/)
@@ -41,6 +49,15 @@ Recursos para estudiar crédito on-chain, colateral, liquidez y liquidaciones.
 - [Riesgos](https://docs.morpho.org/learn/resources/risks/)
 
 **Al analizar un mercado o vault**, identifica la red y el contrato; curator, owner y allocator; mercados y caps; colateral, oráculo y LLTV. Separa el interés base de los incentivos y revisa fees, permisos administrativos y liquidez de retiro.
+
+#### Mecánica y riesgos
+
+- **Identidad del mercado:** cinco parámetros lo definen: activo prestado, colateral, oráculo, modelo de tasas (IRM) y LLTV. La creación abierta no implica que un mercado haya sido evaluado o recomendado por Morpho.
+- **Contabilidad y flujos:** distingue `supply` de `supplyCollateral`; el colateral no se presta por defecto. Estudia la relación entre assets y shares para contabilizar depósitos, deuda e intereses: no asumas un saldo ERC-20 de recibo como en Aave.
+- **Liquidaciones y pérdidas:** si el LTV supera el LLTV, la posición puede liquidarse. El incentivo depende del LLTV y el núcleo permite liquidar toda la deuda, sujeto al colateral y a las condiciones del contrato. Cuando se agota el colateral y queda deuda, el protocolo contabiliza la pérdida proporcionalmente entre proveedores del mercado; aislamiento no equivale a ausencia de pérdida.
+- **Riesgo externo:** el núcleo acepta el oráculo elegido por el mercado; eso no garantiza su precisión. Revisa feeds, unidades, actualizaciones, liquidez de venta del colateral y comportamiento ante depeg.
+- **Mercado frente a vault:** el núcleo no incluye caps de supply/borrow como Aave; los límites de exposición pueden aplicarse en capas de gestión. Un vault añade decisiones de asignación, permisos y dependencias: comprueba su versión antes de atribuirle características del núcleo.
+- **Salida y permisos:** un depósito no garantiza retiro inmediato si la liquidez está prestada. Revisa autorizaciones de cuenta, contratos integradores y riesgos compartidos: mercados aislados pueden depender del mismo activo, oráculo o contrato central.
 
 ### 1.2. Aave V3
 

@@ -1,22 +1,31 @@
 # DeFi
 
-Recursos en español para estudiar finanzas descentralizadas: préstamos, provisión de liquidez, stablecoins, ejecución y riesgos.
+Recursos en español sobre finanzas descentralizadas: lending, provisión de liquidez, stablecoins, ejecución y riesgos. El repositorio es temático: **no impone una ruta ni un orden obligatorio de estudio**.
 
-**No hay una ruta ni un orden obligatorio.** Consulta los temas que necesites y aporta correcciones o recursos mediante issues y pull requests.
+## Índice
 
-## Temas
+- [1. Préstamos y mercados: Morpho](#1-préstamos-y-mercados-morpho)
+- [2. Liquidez y market making: Meteora DLMM](#2-liquidez-y-market-making-meteora-dlmm)
+  - [Comparación de resultados](#comparación-de-resultados)
+- [3. Stablecoins](#3-stablecoins)
+  - [USDC / Circle](#usdc--circle)
+  - [USDT / Tether](#usdt--tether)
+  - [DAI / USDS / Sky](#dai--usds--sky)
+- [4. Ethereum: infraestructura para DeFi](#4-ethereum-infraestructura-para-defi)
+  - [Red y transacciones](#red-y-transacciones)
+  - [Tokens, wallets y permisos](#tokens-wallets-y-permisos)
+  - [Consulta técnica](#consulta-técnica)
+- [5. Datos y verificación](#5-datos-y-verificación)
+- [6. MEV, ejecución y privacidad](#6-mev-ejecución-y-privacidad)
+- [7. Libros y lecturas](#7-libros-y-lecturas)
+- [8. Colaborar](#8-colaborar)
+- [9. Licencia](#9-licencia)
 
-- [Préstamos: Morpho](#préstamos-morpho)
-- [Liquidez y market making: Meteora DLMM](#liquidez-y-market-making-meteora-dlmm)
-- [Stablecoins](#stablecoins)
-- [Ethereum: infraestructura para DeFi](#ethereum-infraestructura-para-defi)
-- [Datos y verificación](#datos-y-verificación)
-- [MEV, ejecución y privacidad](#mev-ejecución-y-privacidad)
-- [Libros y lecturas](#libros-y-lecturas)
+---
 
-## Préstamos: Morpho
+## 1. Préstamos y mercados: Morpho
 
-**Qué estudiar:** mercados, vaults, colateral, oráculos, LLTV, liquidaciones y gestión de riesgos.
+**Enfoque:** lending on-chain, mercados, vaults, colateral, oráculos, LLTV, liquidaciones y gestión de riesgos.
 
 - [Morpho Blue](https://docs.morpho.org/learn/concepts/blue/)
 - [Vault V2](https://docs.morpho.org/learn/concepts/vault-v2/)
@@ -25,18 +34,18 @@ Recursos en español para estudiar finanzas descentralizadas: préstamos, provis
 - [Recompensas](https://docs.morpho.org/learn/concepts/rewards/)
 - [Riesgos](https://docs.morpho.org/learn/resources/risks/)
 
-**Para analizar un mercado o vault:** identifica red y contrato, curator/owner/allocator, mercados y caps, colateral, oráculo y LLTV. Separa el interés base de los incentivos; revisa fees, permisos administrativos y liquidez de retiro.
+**Al analizar un mercado o vault**, identifica la red y el contrato; curator, owner y allocator; mercados y caps; colateral, oráculo y LLTV. Separa el interés base de los incentivos y revisa fees, permisos administrativos y liquidez de retiro.
 
-## Liquidez y market making: Meteora DLMM
+## 2. Liquidez y market making: Meteora DLMM
 
-**Qué estudiar:** bins, bin step, rango, fees, inventario y estrategias Spot, Curve y BidAsk.
+**Enfoque:** bins, bin step, rango, fees, inventario y estrategias Spot, Curve y BidAsk.
 
 - [Qué es DLMM](https://docs.meteora.ag/core-products/dlmm/what-is-dlmm)
 - [Estrategias y casos de uso](https://docs.meteora.ag/core-products/dlmm/strategies-and-use-cases)
 - [Modo de cobro de fees](https://docs.meteora.ag/core-products/dlmm/collect-fee-mode)
 - [Auditorías](https://docs.meteora.ag/resources/audits/dlmm)
 
-**Para analizar una posición:** identifica el bin activo, la liquidez y el volumen, y calcula en qué token queda la posición si el precio sube o baja. Compara fees realizados con impermanent loss y costes de gestión. Si hay un vault o bot, revisa sus permisos.
+**Al analizar una posición**, identifica el bin activo, la liquidez y el volumen; calcula en qué token queda la posición si el precio se mueve. Compara fees realizados con impermanent loss y costes de gestión. Si se usa un vault o bot, revisa sus permisos.
 
 ### Comparación de resultados
 
@@ -50,9 +59,9 @@ Lending neto = interés de borrowers + incentivos realizados
 
 Son esquemas orientativos, no modelos completos. Define horizonte, moneda de valoración y referencia de comparación —por ejemplo, mantener los activos— para evitar mezclar métricas o contabilizar pérdidas dos veces.
 
-## Stablecoins
+## 3. Stablecoins
 
-Subtema de DeFi: emisión, reservas, canje, custodia, redes y riesgos. Las páginas del emisor describen sus propios productos y afirmaciones; no constituyen por sí solas prueba independiente de solvencia o adopción.
+Subtema de DeFi: emisión, reservas, canje, custodia, redes y riesgos. Las páginas de un emisor describen sus propios productos y afirmaciones; por sí solas no son prueba independiente de solvencia o adopción.
 
 ### USDC / Circle
 
@@ -72,11 +81,11 @@ Subtema de DeFi: emisión, reservas, canje, custodia, redes y riesgos. Las pági
 - [Documentación de DAI](https://developers.skyeco.com/protocol/tokens/dai/)
 - [Documentación del protocolo](https://developers.skyeco.com/)
 
-**Preguntas de análisis:** ¿quién emite el activo?, ¿qué derecho de canje existe?, ¿qué reservas o colateral lo respaldan?, ¿qué controles de congelamiento aplican?, ¿cuál es el contrato oficial y en qué red se utiliza?
+**Preguntas para evaluar una stablecoin:** ¿quién la emite?, ¿qué derecho de canje existe?, ¿qué reservas o colateral la respaldan?, ¿qué controles de congelamiento aplican?, ¿cuál es el contrato oficial y en qué red se utiliza?
 
-## Ethereum: infraestructura para DeFi
+## 4. Ethereum: infraestructura para DeFi
 
-Referencia técnica de apoyo, no una ruta de programación ni el eje de todo el repositorio.
+Referencias de apoyo sobre la infraestructura subyacente; no convierten el repositorio en una ruta de programación.
 
 ### Red y transacciones
 
@@ -98,7 +107,7 @@ Referencia técnica de apoyo, no una ruta de programación ni el eje de todo el 
 - [Ethereum Protocol Fellowship](https://epf.wiki/#/eps/intro)
 - [Mastering Ethereum — referencia web](https://masteringethereum.xyz/)
 
-## Datos y verificación
+## 5. Datos y verificación
 
 - [Etherscan](https://etherscan.io/) — contratos, transferencias y eventos.
 - [Etherscan API](https://docs.etherscan.io/)
@@ -108,7 +117,7 @@ Referencia técnica de apoyo, no una ruta de programación ni el eje de todo el 
 
 La oferta de stablecoins no equivale a volumen de pagos, y la distribución por red no demuestra liquidez local ni acceso a off-ramp. Revisa periodo y metodología antes de citar métricas.
 
-## MEV, ejecución y privacidad
+## 6. MEV, ejecución y privacidad
 
 - [MEV — Ethereum](https://ethereum.org/developers/docs/mev/)
 - [Flashbots Protect](https://docs.flashbots.net/flashbots-protect/overview)
@@ -118,7 +127,7 @@ La oferta de stablecoins no equivale a volumen de pagos, y la distribución por 
 - [Privacidad en Ethereum](https://ethereum.org/privacy/ethereum/)
 - [Hoja de ruta de privacidad](https://ethereum.org/roadmap/privacy/)
 
-**Envío privado no significa privacidad en la cadena:** ocultar una transacción del mempool público antes de incluirla no oculta automáticamente sus datos después de la inclusión.
+> **Envío privado no significa privacidad en la cadena:** ocultar una transacción del mempool público antes de incluirla no oculta automáticamente sus datos después de la inclusión.
 
 Lecturas pendientes de evaluación crítica:
 
@@ -126,7 +135,7 @@ Lecturas pendientes de evaluación crítica:
 - [PropAMM Shenanigans — 0x](https://0x.org/post/propamm-shenanigans)
 - [Proprietary AMMs and Ethereum — ethresear.ch](https://ethresear.ch/t/proprietary-amms-and-ethereum/25543)
 
-## Libros y lecturas
+## 7. Libros y lecturas
 
 Selección por tema, sin secuencia obligatoria:
 
@@ -139,12 +148,12 @@ Selección por tema, sin secuencia obligatoria:
 | [Decoding Digital Assets](https://link.springer.com/book/10.1007/978-3-031-54601-3) | Stablecoins, depósitos tokenizados y CBDC. |
 | [The Anatomy of the Swipe — Ahmed Siddiqui](https://www.academyoftheswipe.com/order-book) | Contexto complementario: pagos con tarjeta y settlement. |
 
-## Colaborar
+## 8. Colaborar
 
 Cualquiera puede proponer recursos, corregir enlaces o mejorar las explicaciones mediante **issues y pull requests**. Consulta [cómo contribuir](CONTRIBUTING.md).
 
 Este material es educativo: no recomienda inversiones ni promete rendimientos. Antes de interactuar con un protocolo, verifica activo, red, contrato, permisos, costes y salida. No compartas secretos ni datos privados.
 
-## Licencia
+## 9. Licencia
 
 [MIT](LICENSE). Los libros y recursos externos conservan sus respectivas licencias; aquí se enlazan, no se redistribuyen.
